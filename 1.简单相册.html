@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <title></title>
+    <link rel="stylesheet" href="css/index.css">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        /*--music start--*/
+        .music {
+        display: none;
+        position: absolute;
+        top: .2rem;
+        right: .2rem;
+        z-index: 100;
+        width: .6rem;
+        height: .6rem;
+        background: url("../audioFile/music.svg") no-repeat;
+        background-size: 100% 100%;
+        }
+
+        .music.move {
+        -webkit-animation: musicMove 1s linear infinite both;
+        animation: musicMove 1s linear infinite both;
+        }
+
+        .move .musicAudio {
+        display: none;
+        }
+
+        @-webkit-keyframes musicMove {
+        0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        }
+        100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        }
+        }
+
+        @keyframes musicMove {
+        0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        }
+        100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+        }
+        }
+        .banner{
+            width: 100%;
+            height: 100%;
+        }
+        .banner>img{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top:0;
+        }
+        .banner ul{
+            width: 100%;
+            position: absolute;
+            bottom:10%;
+            text-align: center;
+            z-index: 15;
+        }
+        .banner ul li{
+            display: inline-block;
+            width: 4rem;
+            height: 4rem;
+            border:.3rem solid rgba(255,255,255,0.8);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+        .banner ul li img{
+            width: 100%;
+            height: 100%;
+        }
+        :target{ /*表示所有目标元素都会起作用*/
+            z-index: 10;
+        }
+
+        @keyframes slideLeft {
+             0%{
+                 transform: translate(-500px);
+             }
+             100%{
+                 transform: translate(0px);
+             }
+         }
+        @keyframes slideTop {
+            0%{
+                transform: translate(0,-500px);
+            }
+            100%{
+                transform: translate(0px,0px);
+            }
+        }
+
+        @keyframes zoomIn {
+            0%{
+                transform: scale(0.2);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        @keyframes zoomOut {
+            0%{
+                transform: scale(2);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        @keyframes rotate {
+            0%{
+                transform: scale(0.2) rotate(0deg);
+            }
+            100%{
+                transform: scale(1) rotate(360deg);
+            }
+        }
+        #bg1:target{  /*指定了id名是bg1的目标元素才执行下面的动画*/
+            animation: slideLeft 1s ;
+        }
+        #bg2:target{
+            animation: slideTop 1s ;
+        }
+        #bg3:target{
+            animation: zoomIn 1s ;
+        }
+        #bg4:target{
+            animation: zoomOut 1s ;
+        }
+        #bg5:target{
+            animation: rotate 1s ;
+        }
+    </style>
+</head>
+<body>
+<section class="music" id="music">
+    <audio id="musicAudio" preload="none" loop src="audioFile/wukong.mp3"/>
+</section>
+<div class="banner" id="banner">
+    <div class="bannerInner">
+        <img src="img/1.jpg" alt="" id="bg1"/>
+        <img src="img/2.jpg" alt="" id="bg2"/>
+        <img src="img/3.jpg" alt="" id="bg3"/>
+        <img src="img/4.jpg" alt="" id="bg4"/>
+        <img src="img/5.jpg"  alt="" id="bg5"/>
+    </div>
+    <ul class="focusList">
+        <li class="selected"><a href="#bg1"><img src="img/1.jpg" alt=""/></a></li>
+        <li><a href="#bg2"><img src="img/2.jpg" alt=""/></a></li>
+        <li><a href="#bg3"><img src="img/3.jpg" alt=""/></a></li>
+        <li><a href="#bg4"><img src="img/4.jpg" alt=""/></a></li>
+        <li><a href="#bg5"><img src="img/5.jpg" alt=""/></a></li>
+    </ul>
+</div>
+<script src="js/index.js"></script>
+<script src="js/animate.js"></script>
+<script src="js/utils.js"></script>
+</body>
+</html>
